@@ -19,7 +19,7 @@ const createUser = async (decoded) => {
     user.OrgId = org.id;
     await user.save();
     try {
-      await axios.post('https://hooks.slack.com/services/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', {
+      await axios.post('https://hooks.slack.com/services/xx/xx/xx', {
         text: `email validation api new user - ${user.email}`
       })
     } catch (e) { }

@@ -34,7 +34,7 @@ export default async (req, res) => {
       const org = await Org.findOne({ where: { name: 'Default' } });
       user = await User.create({ email, name: `${given_name} ${family_name}`, photo: picture, OrgId: org.id })
 
-      await axios.post('https://hooks.slack.com/services/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', {
+      await axios.post('https://hooks.slack.com/services/xx/xx/xx', {
         text: `email validation api new user - ${user.email}`
       })
     }
