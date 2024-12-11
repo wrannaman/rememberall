@@ -48,7 +48,7 @@ Assistant: According to our previous discussion, we implemented JWT-based auth..
 
 ```bash
 git clone https://github.com/yourusername/rememberall.git
-cd rememberall
+cd rememberall/deploy
 docker-compose up -d
 ```
 
