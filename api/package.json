@@ -1,0 +1,63 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "local": "cp .env.local .env && nodemon index.js",
+    "dev": "cp .env.dev .env && nodemon index.js --ignore worker/**",
+    "dev-worker": "cp .env.dev .env && nodemon worker/index.js --ignore *.txt",
+    "prod-local": "cp .env.prod-local .env && nodemon index.js",
+    "prod": "cp .env.prod .env && pm2 start ./worker/index.js --name attention-is-everything",
+    "restart": "cp .env.prod .env && pm2 restart attention-is-everything",
+    "test": "export NODE_ENV=test && npx mocha tests/**/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.691.0",
+    "@aws-sdk/client-s3": "^3.696.0",
+    "@aws-sdk/hash-node": "^3.370.0",
+    "@aws-sdk/protocol-http": "^3.370.0",
+    "@aws-sdk/s3-request-presigner": "^3.696.0",
+    "@langchain/textsplitters": "^0.1.0",
+    "@lifeomic/attempt": "^3.1.0",
+    "@mendable/firecrawl-js": "^1.8.2",
+    "@zilliz/milvus2-sdk-node": "^2.5.1",
+    "axios": "^1.7.4",
+    "bullmq": "^5.25.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^144.0.0",
+    "ioredis": "^5.4.1",
+    "jsdom": "^25.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "node-cron": "^3.0.3",
+    "oauth-1.0a": "^2.2.6",
+    "openai": "^4.76.1",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "redis": "^4.7.0",
+    "resend": "^4.0.1-alpha.0",
+    "rss-parser": "^3.13.0",
+    "sequelize": "^6.37.3",
+    "snoowrap": "^1.23.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "twitter-api-v2": "^1.18.2",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  },
+  "overrides": {
+    "whatwg-url": "14.0.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "supertest": "^7.0.0"
+  }
+}

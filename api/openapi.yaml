@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Memory API
+  version: 1.0.0
+  description: API for managing memories in vector database
+
+servers:
+  - url: https://0d37-47-157-89-31.ngrok-free.app
+    description: Development server
+
+paths:
+  /memories:
+    get:
+      operationId: getMemories
+      summary: List or search memories
+      description: Retrieves memories with optional search and pagination
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Optional search term for semantic search
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+          description: Number of memories to return
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+          description: Number of memories to skip
+      responses:
+        '200':
+          description: List of memories
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoriesResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - BearerAuth: []
+
+  /memory:
+    post:
+      operationId: createMemory
+      summary: Create a new memory
+      description: Creates a new memory and generates its vector embedding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMemoryRequest'
+      responses:
+        '200':
+          description: Memory created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateMemoryResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - BearerAuth: []
+
+components:
+  schemas:
+    Memory:
+      type: object
+      properties:
+        id:
+          type: string
+        memory:
+          type: string
+
+    MemoriesResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        memories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Memory'
+
+    CreateMemoryRequest:
+      type: object
+      required:
+        - memory
+      properties:
+        memory:
+          type: string
+          description: The text content of the memory
+          maxLength: 5000
+
+    CreateMemoryResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        memory:
+          $ref: '#/components/schemas/Memory'
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

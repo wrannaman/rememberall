@@ -1,0 +1,9 @@
+.env
+node_modules
+.env.*
+.DS_Store
+build_push.sh 
+google_oauth.json 
+source.txt
+*.mp3 
+*.txt
