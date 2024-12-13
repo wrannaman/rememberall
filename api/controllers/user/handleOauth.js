@@ -31,12 +31,17 @@ export default async (req, res) => {
     // see if user exists. if not, create them 
     let user = await User.findOne({ where: { email } })
     if (!user) {
-      const org = await Org.findOne({ where: { name: 'Default' } });
-      user = await User.create({ email, name: `${given_name} ${family_name}`, photo: picture, OrgId: org.id })
+      let org = await Org.findOne({ where: { name: 'Default' } });
+      if (!org) org = await Org.create({ name: 'Default' })
+      user = await User.create({ email, name: `${given_name} ${family_name}`, photo: picture, OrgId: org?.id })
 
-      await axios.post('https://hooks.slack.com/services/xx/xx/xx', {
-        text: `email validation api new user - ${user.email}`
-      })
+      try {
+        await axios.post('https://hooks.slack.com/services/xx/xx/xx', {
+          text: `email validation api new user - ${user.email}`
+        })
+      } catch (e) {
+        console.error('slack error')
+      }
     }
     const token = jwt.sign({ UserId: user.id, email: user.email }, process.env.JWT_SECRET)
     return res.json({ success: true, token, user });

@@ -14,6 +14,7 @@ import {
 const navigation = [
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'Use Cases', href: '#use-cases' },
+  { name: 'Try Our GPT', href: 'https://chatgpt.com/g/g-6758dcd4e3948191b55b20aba2866b3b-rememberall' },
   { name: 'Open Source', href: 'https://github.com/wrannaman/rememberall' },
   { name: 'Install', href: '/auth' },
 ]

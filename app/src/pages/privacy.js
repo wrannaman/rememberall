@@ -7,12 +7,12 @@ const markdown = `
 
 **Last Updated: 8/14/2024**
 
-Welcome to OnSched, a platform designed to empower you to take control of your health data. Your privacy is of utmost importance to us. This Privacy Policy explains how we collect, use, and share your information when you use our services.
+Welcome to Rememberall, a platform designed to empower you to take control of your health data. Your privacy is of utmost importance to us. This Privacy Policy explains how we collect, use, and share your information when you use our services.
 
 ## 1. Data Collection and Use
 
 **Personal Information:**  
-OnSched collects personal information that you voluntarily provide when you use our services. This may include health-related data such as weight, steps, sleep patterns, heart rate, and other biometric data.
+Rememberall collects personal information that you voluntarily provide when you use our services. This may include health-related data such as weight, steps, sleep patterns, heart rate, and other biometric data.
 
 **Purpose:**  
 The primary purpose of collecting your health data is to empower you with the tools and insights necessary to manage and improve your health. We may also use your data to enhance our services, provide customer support, and improve user experience.
@@ -28,7 +28,7 @@ In some cases, third-party companies may request access to your data through our
 ## 3. Third-Party Services
 
 **Collaboration with Third Parties:**  
-We may work with third-party companies that wish to use our platform to collect health data from their users. These companies might contract with us to bring their users onto the OnSched platform for purposes such as participating in clinical trials or other health studies. However, no data will be shared with these third parties without your clear, informed, and explicit consent.
+We may work with third-party companies that wish to use our platform to collect health data from their users. These companies might contract with us to bring their users onto the Rememberall platform for purposes such as participating in clinical trials or other health studies. However, no data will be shared with these third parties without your clear, informed, and explicit consent.
 
 ## 4. Data Security
 
@@ -52,7 +52,7 @@ If you have any questions or concerns about this Privacy Policy or our data prac
 
 ---
 
-**By using OnSched, you agree to this Privacy Policy.**
+**By using Rememberall, you agree to this Privacy Policy.**
 
 `
 
@@ -61,8 +61,8 @@ export default function Privacy() {
   return (
     <>
       <Head>
-        <title>Privacy - OnSched</title>
-        <meta name="description" content={"OnSched Privacy Policy"} />
+        <title>Privacy - Rememberall</title>
+        <meta name="description" content={"Rememberall Privacy Policy"} />
         <meta name="keywords" content={`API, Healthcare`} />
       </Head>
       <div className="prose bg-white m-auto lg:px-8 pb-32">
